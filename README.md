@@ -1,16 +1,71 @@
-# test_crypto
+# Crypto App
 
-A new Flutter project.
+A Flutter application using **Clean Architecture** principles, structured with separation of concerns for better scalability, maintainability, and testability.
 
-## Getting Started
+## 🧱 Project Structure
 
-This project is a starting point for a Flutter application.
+```bash
+lib/
+├── src/
+│   └── crypto/
+│       ├── data/
+│       │   ├── datasources/
+│       │   │   ├── crypto_datasource.dart
+│       │   │   └── i_crypto_datasource.dart
+│       │   ├── dtos/
+│       │   │   ├── crypto_dto.dart
+│       │   │   ├── crypto_dto.freezed.dart
+│       │   │   └── crypto_dto.g.dart
+│       │   └── repositories/
+│       │       ├── crypto_repository.dart
+│       │       └── i_crypto_repository.dart
+│       ├── domain/
+│       ├── ui/
+│       │   ├── controller/
+│       │   │   └── crypto_controller.dart
+│       │   └── views/
+│       │       ├── crypto_detail_view.dart
+│       │       └── home_view.dart
+│       └── di.dart
+├── main.dart
+````
 
-A few resources to get you started if this is your first Flutter project:
+🔄 Layers Explained
+data/
+Handles data-related logic. It contains:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+datasources/: Interfaces and implementations for data access (e.g., APIs, databases).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+dtos/: Data Transfer Objects using freezed for immutability and serialization.
+
+repositories/: Concrete implementations of domain-level repository interfaces.
+
+domain/
+This layer is intended for:
+
+Entities
+
+Repository interfaces
+
+Use cases
+
+🔒 Note: This directory is currently empty or in progress.
+
+ui/
+Responsible for the presentation layer. Includes:
+
+controller/: Logic layer (e.g., using GetX or another state management solution).
+
+views/: UI widgets and screens.
+
+di.dart
+Handles dependency injection configuration.
+
+main.dart
+App entry point.
+
+🧰 Tools & Packages
+freezed for immutable models and sealed classes
+
+get_it or injectable for DI (assumed)
+
